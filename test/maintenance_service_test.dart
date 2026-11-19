@@ -38,7 +38,7 @@ void main() {
     );
   });
 
-  // ---------- Normal cases ----------
+  //Normal 
 
   test('records maintenance with expense and sums total', () {
     service.updateOdometer(bike, 1000);
@@ -77,7 +77,7 @@ void main() {
     expect(due.map((s) => s.taskName), ['Oil change']);
   });
 
-  // ---------- Invalid cases ----------
+  // Invalid
 
   test('rejects record for a task without schedule', () {
     // "Tire change" does not have a maintenance schedule.
@@ -126,7 +126,7 @@ void main() {
     );
   });
 
-  // ---------- Boundary cases ----------
+  //Boundary 
 
   test('status is dueSoon at 100 km before interval', () {
     // This is exactly 100 km below the 3000 km oil interval.
