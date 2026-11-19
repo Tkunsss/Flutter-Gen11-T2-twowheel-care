@@ -138,7 +138,7 @@ void main() {
     );
   });
 
-  test('status is overdue exactly at the interval (3000 km)', () {
+  test('status is overdue exactly at the interval (3100 km)', () {
     service.updateOdometer(bike, 3100);
 
     // the schedule is overdue.

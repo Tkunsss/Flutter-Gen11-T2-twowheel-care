@@ -119,4 +119,19 @@ class MaintenanceService {
     // If a record has no expense, use zero instead.
     return v.records.fold(0.0, (sum, r) => sum + (r.expense?.amount ?? 0));
   }
+    // Return the vehicle's maintenance history, newest first.
+  List<MaintenanceRecord> getHistory(Vehicle v) {
+    final list = List<MaintenanceRecord>.of(v.records);
+    list.sort((a, b) => b.date.compareTo(a.date));
+    return list;
+  }
+
+  // Remove a maintenance schedule from a vehicle.
+  void removeSchedule(Vehicle v, String taskName) {
+    final before = v.schedules.length;
+    v.schedules.removeWhere((s) => s.taskName == taskName);
+    if (v.schedules.length == before) {
+      throw ArgumentError('No schedule for task "$taskName"');
+    }
+  }
 }
